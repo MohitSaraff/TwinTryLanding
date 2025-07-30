@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -25,8 +25,12 @@ import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  workEmail: z.string().email({ message: "Please enter a valid email address" }),
-  company: z.string().min(2, { message: "Company name must be at least 2 characters" }),
+  workEmail: z
+    .string()
+    .email({ message: "Please enter a valid email address" }),
+  company: z
+    .string()
+    .min(2, { message: "Company name must be at least 2 characters" }),
   queryType: z.string().min(1, { message: "Please select an option" }),
 });
 
@@ -34,7 +38,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function DemoRequestSection() {
   const { toast } = useToast();
-  
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,7 +56,8 @@ export default function DemoRequestSection() {
     onSuccess: () => {
       toast({
         title: "Demo Request Submitted",
-        description: "Thank you for your interest! Our team will contact you shortly to schedule your demo.",
+        description:
+          "Thank you for your interest! Our team will contact you shortly to schedule your demo.",
       });
       form.reset();
     },
@@ -70,7 +75,10 @@ export default function DemoRequestSection() {
   };
 
   return (
-    <section id="demo" className="py-20 bg-gradient-to-b from-white to-gray-50/70">
+    <section
+      id="demo"
+      className="py-20 bg-gradient-to-b from-white to-gray-50/70"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-[#3c3758] to-[#4a4168] rounded-3xl overflow-hidden shadow-xl animate-gradient-y">
           <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -79,107 +87,91 @@ export default function DemoRequestSection() {
                 Ready to Transform Your Retail Experience?
               </h2>
               <p className="text-gray-100 mb-8">
-                Schedule a personalized demo to see how TwinTry™ can elevate your customer experience and boost your sales metrics.
+                Schedule a personalized demo to see how TwinTry™ can elevate
+                your customer experience and boost your sales metrics.
               </p>
-              
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <FormField
-                    control={form.control}
+
+              <form
+                action="https://formsubmit.co/saraffmohit@gmail.com"
+                method="POST"
+                className="space-y-4"
+              >
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input
+                  type="hidden"
+                  name="_autoresponse"
+                  value="Thank you for reaching out! We'll get back to you soon."
+                />
+                <input
+                  type="hidden"
+                  name="_next"
+                  value={window.location.origin + "/thank-you"}
+                />
+
+                <div>
+                  <label className="text-gray-100">Your Name</label>
+                  <input
+                    type="text"
                     name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-100">Your Name</FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="Full Name" 
-                            {...field} 
-                            className="bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:ring-white/50"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                    required
+                    placeholder="Full Name"
+                    className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:ring-white/50 p-2 rounded"
                   />
-                  
-                  <FormField
-                    control={form.control}
-                    name="workEmail"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-100">Work Email</FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="you@company.com" 
-                            {...field} 
-                            className="bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:ring-white/50"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                </div>
+
+                <div>
+                  <label className="text-gray-100">Work Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="you@company.com"
+                    className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:ring-white/50 p-2 rounded"
                   />
-                  
-                  <FormField
-                    control={form.control}
+                </div>
+
+                <div>
+                  <label className="text-gray-100">Company</label>
+                  <input
+                    type="text"
                     name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-100">Company</FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="Your Company Name" 
-                            {...field} 
-                            className="bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:ring-white/50"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                    required
+                    placeholder="Your Company Name"
+                    className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:ring-white/50 p-2 rounded"
                   />
-                  
-                  <FormField
-                    control={form.control}
+                </div>
+
+                <div>
+                  <label className="text-gray-100">
+                    What are you interested in?
+                  </label>
+                  <select
                     name="queryType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-100">What are you interested in?</FormLabel>
-                        <Select 
-                          onValueChange={field.onChange} 
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="bg-white/10 border-white/20 text-white focus:ring-white/50">
-                              <SelectValue placeholder="Select an option" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="demo">Product Demo</SelectItem>
-                            <SelectItem value="pricing">Pricing Information</SelectItem>
-                            <SelectItem value="integration">Integration Details</SelectItem>
-                            <SelectItem value="custom">Custom Solution</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-[#eeff15] text-[#2c2747] hover:bg-[#d9ea00] focus:ring-[#eeff15] focus:ring-offset-[#2c2747]"
-                    disabled={mutation.isPending}
+                    required
+                    className="w-full bg-white/10 border-white/20 text-white focus:ring-white/50 p-2 rounded"
                   >
-                    {mutation.isPending ? "Submitting..." : "Book a Free Demo"}
-                  </Button>
-                </form>
-              </Form>
+                    <option value="">Select an option</option>
+                    <option value="product-demo">Product Demo</option>
+                    <option value="pricing-info">Pricing Information</option>
+                    <option value="integration-details">Integration Details</option>
+                    <option value="custom-solution">Custom Solution</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#eeff15] text-[#2c2747] hover:bg-[#d9ea00] focus:ring-[#eeff15] focus:ring-offset-[#2c2747] font-bold py-2 rounded"
+                >
+                  Book a Free Demo
+                </button>
+              </form>
             </div>
-            
+
             <div className="hidden lg:block relative">
-              <img 
-                src="https://images.unsplash.com/photo-1581078426770-6d336e5de7bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                alt="Retail experience with digital innovation" 
+              <img
+                src="hero-image.webp" // Replace with your actual image path
+                alt="Retail experience with digital innovation"
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>

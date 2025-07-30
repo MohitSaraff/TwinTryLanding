@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <div className="font-sans text-foreground bg-background">
       <Navbar />
-      
+
       <main className="pt-28 pb-16 bg-gradient-to-br from-gray-50 via-white to-gray-50/70 animate-gradient-y">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto mb-10">
@@ -18,14 +18,14 @@ export default function Contact() {
               We're here to help you build beyond reality. Reach out for demos, partnership inquiries, or any questions regarding our TwinTry™ platform.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <ContactInfo />
-            <ContactForm />
+            {/* <ContactForm /> */}
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

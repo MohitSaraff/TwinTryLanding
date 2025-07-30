@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <div>
+          <div className="col-span-1 md:col-span-1 lg:col-span-3">
             <div className="flex items-center space-x-2 mb-6">
                 <img
                 src="/logo.jpeg"
@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="text-right">
             <h3 className="font-display font-semibold text-lg mb-6">Products</h3>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">TwinTry™</a></li>
@@ -54,7 +54,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h3 className="font-display font-semibold text-lg mb-6">Company</h3>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
@@ -72,7 +72,7 @@ export default function Footer() {
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">GDPR Compliance</a></li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         <div className="border-t border-gray-800 pt-8">
@@ -80,11 +80,11 @@ export default function Footer() {
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               © {currentYear} Twinverse Technologies Pvt Ltd. All rights reserved.
             </p>
-            <div className="flex space-x-6">
+            {/* <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy</a>
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms</a>
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Cookies</a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

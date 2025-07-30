@@ -11,9 +11,6 @@ export default function Navbar() {
   const navLinks = [
     { text: "TwinTry™", href: "/#how-it-works" },
     { text: "TwinMock™", href: "/twinmock" },
-    { text: "Features", href: "/#features" },
-    { text: "Benefits", href: "/#benefits" },
-    { text: "Integration", href: "/#integration" },
     { text: "Contact", href: "/contact" }
   ];
 
@@ -37,7 +34,7 @@ export default function Navbar() {
                 key={index}
                 href={link.href}
                 className={`text-sm font-medium ${
-                  (location === "/" && link.href.startsWith("/#")) || 
+                  (location === "/" && link.href.startsWith("/#")) ||
                   (location === link.href)
                     ? "text-primary"
                     : "text-gray-700 hover:text-primary"

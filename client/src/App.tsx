@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Contact from "@/pages/Contact";
+import ThankYouPage from "./pages/ThankYouPage";
 import TwinMock from "@/pages/TwinMock";
 
 function Router() {
@@ -13,6 +14,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/contact" component={Contact} />
       <Route path="/twinmock" component={TwinMock} />
+      <Route path="/thank-you" component={ThankYouPage} />
       <Route component={NotFound} />
     </Switch>
   );
